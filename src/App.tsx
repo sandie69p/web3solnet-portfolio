@@ -1,4 +1,11 @@
-import NFT from './components/NFT'
+import Header from './components/Header';
+import Hero from './components/Hero';
+import Projects from './components/Projects';
+import SmartContracts from './components/SmartContracts';
+import TipSection from './components/TipSection';
+import Footer from './components/Footer';
+import Social from './components/Social';
+
 import './style/App.css'
 
 function App() {
@@ -6,17 +13,13 @@ function App() {
 
   return (
     <>
-      <main>
-        <div>
-          <NFT 
-            nome="#"
-            indirizzo="0xabcd"
-            sigla="#"
-            prezzo="1"
-            owner="0x1111"
-          />
-        </div>
-      </main>
+      <Header />
+      <Hero />
+      <Projects />
+      <SmartContracts />
+      <TipSection />
+      <Social />
+      <Footer />
     </>
   );
 }
