@@ -1,5 +1,5 @@
 /* ==========================================================================
-   RESEARCH SUPPORT & CONTRIBUTION MODULE (GOTHAM STYLE UNIFIED)
+   RESEARCH SUPPORT & CONTRIBUTION MODULE (GOTHAM STYLE UNIFIED WITH ASSETS)
    ========================================================================== */
 
 .research-support-section {
@@ -75,7 +75,7 @@
     color: var(--gotham-text-muted);
 }
 
-/* Contenitore di input geometrico con unità integrata */
+/* Contenitore di input geometrico */
 .input-container-gotham {
     display: flex;
     position: relative;
@@ -87,7 +87,7 @@
     background-color: var(--gotham-bg-input);
     border: 1px solid var(--gotham-border-muted);
     color: var(--gotham-text-primary);
-    padding: 14px 60px 14px 14px; /* Spazio a destra per non sovrapporsi alla label 'SOL' */
+    padding: 14px 100px 14px 14px; /* Aumentato lo spazio per badge e icona */
     font-size: 0.95rem;
     font-family: var(--font-mono);
     width: 100%;
@@ -99,13 +99,26 @@
     border-color: var(--gotham-border-active);
 }
 
-.input-unit-label {
+/* Gestione delle icone valutarie integrate */
+.currency-badge {
     position: absolute;
     right: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    pointer-events: none;
+}
+
+.currency-icon {
+    width: 18px;
+    height: 18px;
+    display: block;
+}
+
+.input-unit-label {
     font-size: 0.85rem;
     font-weight: 700;
     color: var(--gotham-text-muted);
-    pointer-events: none;
     text-transform: uppercase;
 }
 
@@ -127,11 +140,24 @@
     margin-top: 6px;
     font-size: 0.8rem;
     letter-spacing: 0.05em;
+    align-items: center;
 }
 
 .conversion-analytics-line .analytics-label {
     color: var(--gotham-text-muted);
     text-transform: uppercase;
+}
+
+.conversion-value-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.currency-icon-small {
+    width: 14px;
+    height: 14px;
+    display: block;
 }
 
 .conversion-analytics-line .analytics-value {

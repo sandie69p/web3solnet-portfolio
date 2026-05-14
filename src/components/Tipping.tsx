@@ -3,6 +3,10 @@ import { useConnection, useWallet } from '@solana/wallet-adapter-react';
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 import { sendSolTip } from '../wallet/tipsTransfer';
 
+// Importazione asset grafici delle valute
+import solIcon from '../img/sol.svg';
+import usdcIcon from '../img/usdc.svg';
+
 type TippingProps = {
     onCancel: () => void;
 };
@@ -16,13 +20,11 @@ function Tipping({ onCancel }: TippingProps) {
     const [operationStatus, setOperationStatus] = useState<string>('');
     const [showReceiverAddress, setShowReceiverAddress] = useState<boolean>(false);
     
-    // Stati per la conversione SOL -> USDC
     const [solPriceUsd, setSolPriceUsd] = useState<number | null>(null);
     const [usdcValue, setUsdcValue] = useState<string>('0.00');
 
     const recipientAddress: string = "2tFjkHazUHaHsGD6jDPS4rwYqFbL8fJfTLweBMCAj9cX";
 
-    // Recupera il prezzo di SOL in tempo reale all'avvio del modulo
     useEffect(() => {
         const fetchSolPrice = async () => {
             try {
@@ -39,12 +41,10 @@ function Tipping({ onCancel }: TippingProps) {
         };
 
         fetchSolPrice();
-        // Aggiorna il prezzo ogni 60 secondi
         const interval = setInterval(fetchSolPrice, 60000);
         return () => clearInterval(interval);
     }, []);
 
-    // Calcola la conversione appena cambia l'ammontare inserito o il prezzo di mercato
     useEffect(() => {
         const parsed = parseFloat(contributionAmount);
         if (!isNaN(parsed) && parsed > 0 && solPriceUsd) {
@@ -99,7 +99,6 @@ function Tipping({ onCancel }: TippingProps) {
                 </div>
             ) : (
                 <>
-                    {/* Input quantità con modulo di conversione */}
                     <div className="form-group">
                         <label htmlFor="contribution-amount">Contribution Value (SOL):</label>
                         <div className="input-container-gotham">
@@ -114,13 +113,20 @@ function Tipping({ onCancel }: TippingProps) {
                                 onChange={(e) => setContributionAmount(e.target.value)}
                                 disabled={operationLoading}
                             />
-                            <span className="input-unit-label">SOL</span>
+                            {/* Icona SOL dentro l'input */}
+                            <div className="currency-badge">
+                                <img src={solIcon} alt="SOL" className="currency-icon" />
+                                <span className="input-unit-label">SOL</span>
+                            </div>
                         </div>
                         
-                        {/* Riga di conversione analitica in USDC */}
                         <div className="conversion-analytics-line">
                             <span className="analytics-label">Est. Value:</span>
-                            <span className="analytics-value">~ {usdcValue} USDC</span>
+                            {/* Icona USDC affianco al valore convertito */}
+                            <div className="conversion-value-wrapper">
+                                <img src={usdcIcon} alt="USDC" className="currency-icon-small" />
+                                <span className="analytics-value">{usdcValue} USDC</span>
+                            </div>
                         </div>
                     </div>
 

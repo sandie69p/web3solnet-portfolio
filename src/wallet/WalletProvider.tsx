@@ -11,15 +11,12 @@ import {
     PhantomWalletAdapter
 } from "@solana/wallet-adapter-wallets";
 
-import {
-    clusterApiUrl
-} from "@solana/web3.js";
+// L'import di @solana/web3.js e clusterApiUrl è stato rimosso da qui
 
 import "@solana/wallet-adapter-react-ui/styles.css";
 
 import { useMemo } from "react";
 import type { ReactNode } from "react";
-
 type Props = {
     children: ReactNode;
 };
