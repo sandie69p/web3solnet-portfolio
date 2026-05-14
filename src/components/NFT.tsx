@@ -1,11 +1,25 @@
-function NFT() {
+type NFTProps = {
+    nome: string;
+    indirizzo: string;
+    sigla: string;
+    prezzo: string;
+    owner: string;
+}
+
+function NFT({
+    nome,
+    indirizzo,
+    sigla,
+    prezzo,
+    owner}: NFTProps
+) {
     return (
         <div className="nft">
-            <p>Nome: /*Nome*/</p>
-            <address>Indirizzo: /*indirizzo*/</address>
-            <p>Sigla: /*sigla*/</p>
-            <p>Prezzo: /*prezzo*/</p>
-            <p>Owner: <address>/*owner*/</address></p>
+            <p>Nome: {nome}</p>
+            <address>Indirizzo: {indirizzo}</address>
+            <p>Sigla: {sigla}</p>
+            <p>Prezzo: {prezzo}</p>
+            <p>Owner: <span>{owner}</span></p>
         </div>
     );
 }
