@@ -1,128 +1,170 @@
-.tip-section {
-    position: relative;
-
-    padding: 160px 48px;
-
-    overflow: hidden;
-
-    background:
-        radial-gradient(
-            circle at 12% 18%,
-            rgba(184, 164, 140, 0.07),
-            transparent 32%
-        ),
-        radial-gradient(
-            circle at 85% 75%,
-            rgba(120, 134, 146, 0.05),
-            transparent 30%
-        ),
-        #111417;
-
-    border-top: 1px solid rgba(255,255,255,0.05);
+.research-support-section {
+    background-color: var(--gotham-bg-base);
+    padding: 100px 40px;
+    border-bottom: 1px solid var(--gotham-border-muted);
 }
 
-.tip-container {
-    position: relative;
-    z-index: 2;
-
-    max-width: 760px;
+.section-container {
+    max-width: 900px;
+    margin: 0 auto;
 }
 
-.tip-label {
-    display: block;
+.contribution-card {
+    background-color: var(--gotham-bg-surface);
+    border: 1px solid var(--gotham-border-muted);
+    padding: 48px;
+}
 
-    margin-bottom: 24px;
+.section-header {
+    margin-bottom: 32px;
+}
 
-    color: rgba(184, 164, 140, 0.72);
-
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.22em;
+.section-label {
     text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--gotham-text-muted);
+    font-weight: 700;
+    font-size: 0.8rem;
 }
 
-.tip-title {
-    margin: 0;
-
-    max-width: 760px;
-
-    color: #f3f2ef;
-
-    font-size: clamp(46px, 6vw, 82px);
-    line-height: 0.92;
-    font-weight: 500;
-    letter-spacing: -0.065em;
+.section-title {
+    font-size: 1.8rem;
+    font-weight: 300;
+    margin-top: 8px;
+    color: var(--gotham-text-primary);
 }
 
-.tip-description {
-    margin-top: 30px;
-
-    max-width: 540px;
-
-    color: rgba(255,255,255,0.54);
-
-    font-size: 16px;
-    line-height: 1.9;
-    font-weight: 400;
+.section-description {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--gotham-text-muted);
+    margin-bottom: 40px;
 }
 
-.tip-actions {
+/* Modulo di input e stati (Tipping) */
+.contribution-module {
     display: flex;
-    align-items: center;
-    gap: 28px;
-
-    margin-top: 52px;
+    flex-direction: column;
+    gap: 24px;
 }
 
-.tip-button {
-    height: 48px;
-    padding: 0 24px;
+.module-title {
+    font-size: 1.4rem;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: var(--gotham-text-primary);
+}
 
-    border: 1px solid rgba(255,255,255,0.07);
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
 
-    background: rgba(255,255,255,0.025);
+.form-group label, .info-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gotham-text-muted);
+}
 
-    color: #f2f2ef;
+.form-input {
+    background-color: var(--gotham-bg-input);
+    border: 1px solid var(--gotham-border-muted);
+    color: var(--gotham-text-primary);
+    padding: 14px;
+    font-size: 0.95rem;
+    font-family: var(--font-mono);
+    width: 100%;
+}
 
-    font-size: 14px;
-    font-weight: 500;
-    letter-spacing: 0.01em;
+.form-input:focus {
+    outline: none;
+    border-color: var(--gotham-border-active);
+}
 
+.address-display {
+    background-color: var(--gotham-bg-input);
+    border: 1px solid var(--gotham-border-muted);
+    padding: 12px;
+    font-size: 0.8rem;
+    word-break: break-all;
+    color: var(--gotham-text-primary);
+}
+
+/* Azioni e Bottoni di Controllo */
+.action-panel {
+    display: flex;
+    gap: 16px;
+    margin-top: 12px;
+}
+
+.action-button {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    font-size: 0.8rem;
+    padding: 14px 28px;
+    border: none;
     cursor: pointer;
-
-    transition:
-        background 180ms ease,
-        border-color 180ms ease,
-        transform 180ms ease;
+    transition: background-color 0.15s ease, color 0.15s ease;
 }
 
-.tip-button:hover {
-    background: rgba(255,255,255,0.045);
-
-    border-color: rgba(184,164,140,0.28);
-
-    transform: translateY(-1px);
+.primary-action {
+    background-color: var(--gotham-accent-primary);
+    color: var(--gotham-bg-base);
 }
 
-.tip-wallet {
-    color: rgba(255,255,255,0.34);
-
-    font-size: 13px;
-    letter-spacing: 0.03em;
+.primary-action:hover {
+    background-color: var(--gotham-accent-hover);
 }
 
-@media (max-width: 900px) {
-    .tip-section {
-        padding: 120px 22px;
-    }
+.secondary-action {
+    background-color: transparent;
+    border: 1px solid var(--gotham-border-active);
+    color: var(--gotham-text-primary);
+}
 
-    .tip-title {
-        font-size: clamp(40px, 11vw, 64px);
-    }
+.secondary-action:hover {
+    background-color: var(--gotham-bg-input);
+}
 
-    .tip-actions {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 18px;
-    }
+.cancel-action {
+    align-self: flex-start;
+    background: transparent;
+    border: none;
+    color: var(--gotham-text-muted);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    padding: 0;
+    margin-top: 12px;
+}
+
+.cancel-action:hover {
+    color: var(--gotham-text-primary);
+}
+
+/* Schermate di Output Operativo */
+.status-display {
+    padding: 14px;
+    background-color: var(--gotham-bg-input);
+    border-left: 2px solid var(--gotham-accent-hover);
+}
+
+.status-text {
+    font-size: 0.8rem;
+    color: var(--gotham-text-primary);
+}
+
+/* Transizioni di dissolvenza rigide e pulite */
+.transition-fade-in {
+    animation: gothamFade 0.2s ease-out;
+}
+
+@keyframes gothamFade {
+    from { opacity: 0; transform: translateY(2px); }
+    to { opacity: 1; transform: translateY(0); }
 }

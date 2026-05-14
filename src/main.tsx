@@ -1,10 +1,18 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './style/index.css'
-import App from './App.tsx'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-)
+import App from './App';
+
+import SolanaProvider from './wallet/WalletProvider';
+
+ReactDOM.createRoot(
+    document.getElementById('root')!
+).render(
+    <React.StrictMode>
+
+        <SolanaProvider>
+            <App />
+        </SolanaProvider>
+
+    </React.StrictMode>
+);

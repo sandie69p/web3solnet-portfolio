@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap');
+
+:root {
+    /* Gotham Palette Integration */
+    --gotham-bg-base: #11121c;        /* Sfondo profondo analitico */
+    --gotham-bg-surface: #181926;     /* Superficie dei moduli e pannelli */
+    --gotham-bg-input: #0b0c12;       /* Campi di input e terminali */
+    
+    --gotham-border-muted: #222436;   /* Divisioni standard di sistema */
+    --gotham-border-active: #313250;  /* Evidenziazione focalizzata */
+    
+    --gotham-text-primary: #efe1ba;   /* Testo osseo/crema (Nessun bianco puro) */
+    --gotham-text-muted: #797b93;      /* Sottotesti e metadati tecnici */
+    
+    --gotham-accent-primary: #fe8f20;  /* Esecuzione Attiva (Arancio Industriale) */
+    --gotham-accent-hover: #fcc639;    /* Stato Hover / Caricamento (Ambra) */
+    --gotham-accent-error: #991b1b;    /* Annullamento / Errore critico */
+
+    --font-mono: 'JetBrains Mono', monospace;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    background-color: var(--gotham-bg-base);
+    color: var(--gotham-text-primary);
+    font-family: var(--font-mono);
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Override per i componenti del Wallet di Solana UI */
+.wallet-adapter-button {
+    font-family: var(--font-mono) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.1em !important;
+    font-size: 0.8rem !important;
+    font-weight: 700 !important;
+    border-radius: 0px !important;
+    background-color: var(--gotham-bg-input) !important;
+    border: 1px solid var(--gotham-border-active) !important;
+    color: var(--gotham-text-primary) !important;
+    transition: all 0.2s ease !important;
+}
+
+.wallet-adapter-button:not([disabled]):hover {
+    background-color: var(--gotham-accent-primary) !important;
+    border-color: var(--gotham-accent-hover) !important;
+    color: var(--gotham-bg-input) !important;
+}

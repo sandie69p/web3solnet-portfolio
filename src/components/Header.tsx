@@ -1,10 +1,18 @@
-import '../style/components/Header.css'
+import '../style/components/Header.css';
+import logoImage from '../img/logo.png';
 
 function Header() {
     return (
         <header className="header">
-            <div className="header-logo">
-                WEB3SOLNET
+            <div className="header-brand">
+                <img 
+                    src={logoImage} 
+                    alt="Web3Solnet Operational Logo" 
+                    className="header-logo-img" 
+                />
+                <span className="header-logo-text">
+                    WEB3SOLNET
+                </span>
             </div>
 
             <nav className="header-nav">

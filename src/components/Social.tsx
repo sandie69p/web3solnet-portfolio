@@ -9,7 +9,7 @@ function Social() {
                 </span>
 
                 <div className="social-links">
-                    <a href="https://github.com/tuo-username" target="_blank" rel="noreferrer">
+                    <a href="https://github.com/sandie69p" target="_blank" rel="noreferrer">
                         GitHub
                     </a>
 
@@ -21,7 +21,7 @@ function Social() {
                         X / Twitter
                     </a>
 
-                    <a href="mailto:tua-email@example.com">
+                    <a href="mailto:salvatore.pisu04@gmail.com">
                         Email
                     </a>
                 </div>

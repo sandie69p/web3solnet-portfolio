@@ -1,15 +1,22 @@
 import '../style/components/Hero.css';
+import backgroundImage from '../img/background.jpg';
 
 function Hero() {
     return (
         <section className="hero">
 
-            <div className="hero-visual">
+            {/* Pannello di monitoraggio con immagine di sfondo */}
+            <div 
+                className="hero-visual" 
+                style={{ backgroundImage: `url(${backgroundImage})` }}
+            >
+                <div className="hero-visual-overlay"></div>
                 <div className="hero-screen">
-                    {/* image / animation / dashboard */}
+                    <div className="terminal-line">[SYS_STATUS: ONLINE]</div>
+                    <div className="terminal-line">[NETWORK: SOLANA_MAINNET]</div>
+                    <div className="terminal-line">[CORE_LOAD: OPTIMAL]</div>
                 </div>
             </div>
-
             <div className="hero-content">
 
                 <span className="hero-role">
