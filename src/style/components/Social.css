@@ -36,3 +36,24 @@
 .social-links a:hover {
     color: var(--gotham-text-muted);
 }
+
+/* ==========================================================================
+   RESPONSIVE LAYOUT - SOCIAL
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    .social-section {
+        padding: 40px 24px;
+    }
+
+    .social-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+    }
+
+    .social-links {
+        flex-direction: column; /* Sviluppo verticale dei link */
+        gap: 16px;
+    }
+}

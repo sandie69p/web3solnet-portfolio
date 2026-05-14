@@ -38,7 +38,6 @@
     max-width: 540px;
 }
 
-/* Area Monitoraggio Dati / Immagine Tattica */
 .hero-visual {
     width: 100%;
     height: 100%;
@@ -50,7 +49,6 @@
     position: relative;
     display: flex;
     align-items: flex-end;
-    /* Rende l'immagine integrata nell'interfaccia monocromatica */
     filter: grayscale(100%) contrast(105%) brightness(90%);
 }
 
@@ -85,4 +83,52 @@
 .terminal-line:first-child {
     color: var(--gotham-accent-primary);
     font-weight: 700;
+}
+
+/* ==========================================================================
+   RESPONSIVE LAYOUT - HERO
+   ========================================================================== */
+
+/* Desktop Compatti / Tablet Landscape */
+@media (max-width: 1024px) {
+    .hero-title {
+        font-size: 1.8rem;
+    }
+}
+
+/* Tablet Verticale e Mobile */
+@media (max-width: 768px) {
+    .hero {
+        grid-template-columns: 1fr; /* Colonna singola */
+        padding: 160px 24px 40px 24px;
+        gap: 32px;
+    }
+    
+    .hero-content {
+        order: 1; /* Il testo viene mostrato prima */
+    }
+    
+    .hero-visual {
+        order: 2; /* Il terminale va sotto */
+        min-height: 300px;
+    }
+}
+
+/* Smartphone Stretti */
+@media (max-width: 480px) {
+    .hero {
+        padding-top: 180px; /* Spazio per l'header a due righe */
+    }
+    
+    .hero-title {
+        font-size: 1.5rem;
+    }
+    
+    .hero-description {
+        font-size: 0.9rem;
+    }
+    
+    .hero-visual {
+        min-height: 250px;
+    }
 }

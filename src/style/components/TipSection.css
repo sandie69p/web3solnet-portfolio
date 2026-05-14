@@ -41,7 +41,6 @@
     margin-bottom: 40px;
 }
 
-/* Modulo di input e stati (Tipping) */
 .contribution-module {
     display: flex;
     flex-direction: column;
@@ -92,7 +91,6 @@
     color: var(--gotham-text-primary);
 }
 
-/* Azioni e Bottoni di Controllo */
 .action-panel {
     display: flex;
     gap: 16px;
@@ -147,7 +145,6 @@
     color: var(--gotham-text-primary);
 }
 
-/* Schermate di Output Operativo */
 .status-display {
     padding: 14px;
     background-color: var(--gotham-bg-input);
@@ -159,7 +156,6 @@
     color: var(--gotham-text-primary);
 }
 
-/* Transizioni di dissolvenza rigide e pulite */
 .transition-fade-in {
     animation: gothamFade 0.2s ease-out;
 }
@@ -167,4 +163,40 @@
 @keyframes gothamFade {
     from { opacity: 0; transform: translateY(2px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   RESPONSIVE LAYOUT - TIP SECTION & MODULE
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    .research-support-section {
+        padding: 60px 24px;
+    }
+
+    .contribution-card {
+        padding: 32px 24px;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .action-panel {
+        flex-direction: column; /* I bottoni si impilano verticalmente */
+        gap: 12px;
+    }
+
+    .action-button {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Adatta anche il bottone del Wallet interno di Solana Adapter */
+    .wallet-adapter-button {
+        width: 100%;
+        justify-content: center;
+    }
 }

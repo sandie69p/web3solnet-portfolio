@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 16px 40px; /* Ridotto leggermente per bilanciare l'altezza dell'immagine */
+    padding: 16px 40px;
     background-color: var(--gotham-bg-base);
     border-bottom: 1px solid var(--gotham-border-muted);
     position: fixed;
@@ -11,19 +11,16 @@
     z-index: 1000;
 }
 
-/* Contenitore Brand (Logo + Testo) */
 .header-brand {
     display: flex;
     align-items: center;
-    gap: 14px; /* Spazio millimetrico tra logo e testo */
+    gap: 14px;
 }
 
-/* Configurazione Geometrica del Logo */
 .header-logo-img {
-    height: 64px; /* Dimensione contenuta e professionale */
+    height: 32px;
     width: auto;
     display: block;
-    /* Mantiene il logo integrato nell'estetica dell'interfaccia */
     filter: grayscale(100%) brightness(95%); 
 }
 
@@ -52,4 +49,41 @@
 
 .header-nav a:hover {
     color: var(--gotham-text-primary);
+}
+
+/* ==========================================================================
+   RESPONSIVE LAYOUT - HEADER
+   ========================================================================== */
+
+/* Tablet e Mobile */
+@media (max-width: 768px) {
+    .header {
+        padding: 16px 24px;
+        flex-direction: column;
+        gap: 16px;
+        position: absolute; /* Evita problemi di overlay su schermi molto corti */
+    }
+
+    .header-nav ul {
+        gap: 20px;
+    }
+    
+    .header-nav a {
+        font-size: 0.75rem;
+    }
+}
+
+/* Smartphone Stretti */
+@media (max-width: 480px) {
+    .header-logo-text {
+        font-size: 0.85rem;
+    }
+    
+    .header-logo-img {
+        height: 28px;
+    }
+
+    .header-nav ul {
+        gap: 12px;
+    }
 }
