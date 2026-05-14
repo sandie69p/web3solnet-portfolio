@@ -28,7 +28,7 @@ function SolanaProvider({
     children
 }: Props) {
 
-    const network = clusterApiUrl("mainnet-beta");
+    const network = "https://mainnet.helius-rpc.com/?api-key=f8f41540-d9dd-40a6-b052-9c814ecaf0ba";
 
     const wallets = useMemo(
         () => [

@@ -1,3 +1,7 @@
+/* ==========================================================================
+   RESEARCH SUPPORT & CONTRIBUTION MODULE (GOTHAM STYLE UNIFIED)
+   ========================================================================== */
+
 .research-support-section {
     background-color: var(--gotham-bg-base);
     padding: 100px 40px;
@@ -41,6 +45,10 @@
     margin-bottom: 40px;
 }
 
+/* ==========================================================================
+   CONTRIBUTION MODULE FORM & INPUTS
+   ========================================================================== */
+
 .contribution-module {
     display: flex;
     flex-direction: column;
@@ -67,14 +75,23 @@
     color: var(--gotham-text-muted);
 }
 
+/* Contenitore di input geometrico con unità integrata */
+.input-container-gotham {
+    display: flex;
+    position: relative;
+    align-items: center;
+    width: 100%;
+}
+
 .form-input {
     background-color: var(--gotham-bg-input);
     border: 1px solid var(--gotham-border-muted);
     color: var(--gotham-text-primary);
-    padding: 14px;
+    padding: 14px 60px 14px 14px; /* Spazio a destra per non sovrapporsi alla label 'SOL' */
     font-size: 0.95rem;
     font-family: var(--font-mono);
     width: 100%;
+    transition: border-color 0.15s ease;
 }
 
 .form-input:focus {
@@ -82,6 +99,47 @@
     border-color: var(--gotham-border-active);
 }
 
+.input-unit-label {
+    position: absolute;
+    right: 16px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--gotham-text-muted);
+    pointer-events: none;
+    text-transform: uppercase;
+}
+
+/* Rimozione delle freccette (spinners) numeriche natali */
+.hide-spinners::-webkit-outer-spin-button,
+.hide-spinners::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.hide-spinners[type='number'] {
+    -moz-appearance: textfield;
+}
+
+/* Riga di conversione asincrona USDC */
+.conversion-analytics-line {
+    display: flex;
+    gap: 8px;
+    margin-top: 6px;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+}
+
+.conversion-analytics-line .analytics-label {
+    color: var(--gotham-text-muted);
+    text-transform: uppercase;
+}
+
+.conversion-analytics-line .analytics-value {
+    color: var(--gotham-accent-hover);
+    font-weight: 500;
+}
+
+/* Display Indirizzo di Verifica */
 .address-display {
     background-color: var(--gotham-bg-input);
     border: 1px solid var(--gotham-border-muted);
@@ -90,6 +148,10 @@
     word-break: break-all;
     color: var(--gotham-text-primary);
 }
+
+/* ==========================================================================
+   INTERACTION & CONTROL PANEL
+   ========================================================================== */
 
 .action-panel {
     display: flex;
@@ -145,6 +207,7 @@
     color: var(--gotham-text-primary);
 }
 
+/* Terminale di Stato Operativo */
 .status-display {
     padding: 14px;
     background-color: var(--gotham-bg-input);
@@ -156,6 +219,10 @@
     color: var(--gotham-text-primary);
 }
 
+/* ==========================================================================
+   TRANSITIONS & RESPONSIVE BREAKPOINTS
+   ========================================================================== */
+
 .transition-fade-in {
     animation: gothamFade 0.2s ease-out;
 }
@@ -165,10 +232,7 @@
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* ==========================================================================
-   RESPONSIVE LAYOUT - TIP SECTION & MODULE
-   ========================================================================== */
-
+/* Tablet Layout */
 @media (max-width: 768px) {
     .research-support-section {
         padding: 60px 24px;
@@ -183,9 +247,10 @@
     }
 }
 
+/* Phone Layout */
 @media (max-width: 480px) {
     .action-panel {
-        flex-direction: column; /* I bottoni si impilano verticalmente */
+        flex-direction: column;
         gap: 12px;
     }
 
@@ -194,7 +259,6 @@
         text-align: center;
     }
 
-    /* Adatta anche il bottone del Wallet interno di Solana Adapter */
     .wallet-adapter-button {
         width: 100%;
         justify-content: center;

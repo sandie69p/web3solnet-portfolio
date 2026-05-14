@@ -1,15 +1,12 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useConnection, useWallet } from '@solana/wallet-adapter-react';
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
-import { sendSolTip } from '../wallet/tipsTransfer'; // Assicurati che il percorso sia corretto
+import { sendSolTip } from '../wallet/tipsTransfer';
 
 type TippingProps = {
-    onCancel: () => void; // Funzione per tornare alla visualizzazione iniziale
+    onCancel: () => void;
 };
 
-/**
- * Componente per il Modulo di Contribuzione Finanziaria
- */
 function Tipping({ onCancel }: TippingProps) {
     const { connection } = useConnection();
     const { publicKey, sendTransaction, connected } = useWallet();
@@ -18,13 +15,45 @@ function Tipping({ onCancel }: TippingProps) {
     const [operationLoading, setOperationLoading] = useState<boolean>(false);
     const [operationStatus, setOperationStatus] = useState<string>('');
     const [showReceiverAddress, setShowReceiverAddress] = useState<boolean>(false);
+    
+    // Stati per la conversione SOL -> USDC
+    const [solPriceUsd, setSolPriceUsd] = useState<number | null>(null);
+    const [usdcValue, setUsdcValue] = useState<string>('0.00');
 
-    // Indirizzo di ricezione predefinito
     const recipientAddress: string = "2tFjkHazUHaHsGD6jDPS4rwYqFbL8fJfTLweBMCAj9cX";
 
-    /**
-     * Esegue la transazione di contribuzione
-     */
+    // Recupera il prezzo di SOL in tempo reale all'avvio del modulo
+    useEffect(() => {
+        const fetchSolPrice = async () => {
+            try {
+                const response = await fetch(
+                    'https://api.coingecko.com/api/v3/simple/price?ids=solana&vs_currencies=usd'
+                );
+                const data = await response.json();
+                if (data && data.solana && data.solana.usd) {
+                    setSolPriceUsd(data.solana.usd);
+                }
+            } catch (error) {
+                console.error("Impossibile recuperare il feed dei prezzi SOL/USDC:", error);
+            }
+        };
+
+        fetchSolPrice();
+        // Aggiorna il prezzo ogni 60 secondi
+        const interval = setInterval(fetchSolPrice, 60000);
+        return () => clearInterval(interval);
+    }, []);
+
+    // Calcola la conversione appena cambia l'ammontare inserito o il prezzo di mercato
+    useEffect(() => {
+        const parsed = parseFloat(contributionAmount);
+        if (!isNaN(parsed) && parsed > 0 && solPriceUsd) {
+            setUsdcValue((parsed * solPriceUsd).toFixed(2));
+        } else {
+            setUsdcValue('0.00');
+        }
+    }, [contributionAmount, solPriceUsd]);
+
     const executeContribution = async () => {
         if (!connected || !publicKey) {
             setOperationStatus("Authentication Required. Connect wallet.");
@@ -41,7 +70,6 @@ function Tipping({ onCancel }: TippingProps) {
             setOperationLoading(true);
             setOperationStatus("Transaction execution in progress...");
 
-            // Invio della transazione
             const signature = await sendSolTip({
                 connection,
                 sender: publicKey,
@@ -50,12 +78,10 @@ function Tipping({ onCancel }: TippingProps) {
                 sendTransaction,
             });
 
-            // Gestione del successo
             setOperationStatus(`Contribution confirmed. TX ID: ${signature.slice(0, 10)}...`);
             setContributionAmount('');
         } catch (error: any) {
             console.error(error);
-            // Gestione dell'errore
             setOperationStatus(`Operation Failure. Error: ${error.message || "Unknown execution error."}`);
         } finally {
             setOperationLoading(false);
@@ -66,7 +92,6 @@ function Tipping({ onCancel }: TippingProps) {
         <div className="contribution-module">
             <h3 className="module-title">Contribution Module</h3>
             
-            {/* Controllo autenticazione wallet */}
             {!connected ? (
                 <div className="authentication-panel">
                     <p>Authentication Required for Transaction Execution.</p>
@@ -74,23 +99,31 @@ function Tipping({ onCancel }: TippingProps) {
                 </div>
             ) : (
                 <>
-                    {/* Input quantità contribuzione */}
+                    {/* Input quantità con modulo di conversione */}
                     <div className="form-group">
                         <label htmlFor="contribution-amount">Contribution Value (SOL):</label>
-                        <input 
-                            id="contribution-amount"
-                            className="form-input"
-                            type="number" 
-                            step="0.1"
-                            min="0"
-                            placeholder="Specify amount, e.g., 0.5"
-                            value={contributionAmount}
-                            onChange={(e) => setContributionAmount(e.target.value)}
-                            disabled={operationLoading}
-                        />
+                        <div className="input-container-gotham">
+                            <input 
+                                id="contribution-amount"
+                                className="form-input hide-spinners"
+                                type="number" 
+                                step="0.1"
+                                min="0"
+                                placeholder="0.00"
+                                value={contributionAmount}
+                                onChange={(e) => setContributionAmount(e.target.value)}
+                                disabled={operationLoading}
+                            />
+                            <span className="input-unit-label">SOL</span>
+                        </div>
+                        
+                        {/* Riga di conversione analitica in USDC */}
+                        <div className="conversion-analytics-line">
+                            <span className="analytics-label">Est. Value:</span>
+                            <span className="analytics-value">~ {usdcValue} USDC</span>
+                        </div>
                     </div>
 
-                    {/* Verifica indirizzo ricevente */}
                     <div className="form-group">
                         <p className="info-label">Recipient Address Verification</p>
                         {showReceiverAddress ? (
@@ -106,14 +139,12 @@ function Tipping({ onCancel }: TippingProps) {
                         )}
                     </div>
 
-                    {/* Visualizzazione stato operazione */}
                     {operationStatus && (
                         <div className={`status-display ${operationLoading ? 'loading' : ''}`}>
                             <p className="status-text">{operationStatus}</p>
                         </div>
                     )}
 
-                    {/* Pannello azioni */}
                     <div className="action-panel">
                         <button 
                             className="action-button primary-action" 
@@ -126,7 +157,6 @@ function Tipping({ onCancel }: TippingProps) {
                 </>
             )}
 
-            {/* Pulsante per annullare l'operazione */}
             <button className="action-button secondary-action cancel-action" onClick={onCancel} disabled={operationLoading}>
                 Cancel Operation
             </button>
