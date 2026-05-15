@@ -26,6 +26,9 @@ function Header() {
                     <li>
                         <a href="#support">Support Me</a>
                     </li>
+                    <li>
+                        <a href="#whoami">Who Am I?</a>
+                    </li>
                 </ul>
             </nav>
         </header>

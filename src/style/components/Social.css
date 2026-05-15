@@ -1,5 +1,5 @@
+/* Social */
 .social-section {
-    background-color: var(--gotham-bg-base);
     padding: 60px 40px;
     border-bottom: 1px solid var(--gotham-border-muted);
 }
@@ -12,48 +12,58 @@
     margin: 0 auto;
 }
 
-.social-label {
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    color: var(--gotham-text-muted);
-}
-
-.social-links {
-    display: flex;
-    gap: 40px;
-}
-
+.social-links { display: flex; gap: 40px; }
 .social-links a {
     color: var(--gotham-text-primary);
     text-decoration: none;
     font-size: 0.85rem;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    transition: color 0.15s ease;
+    letter-spacing: 0.1em;
 }
 
-.social-links a:hover {
+/* Footer */
+.footer-system {
+    padding: 60px 40px;
+    margin-top: auto;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-brand-name {
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    display: block;
+}
+
+.footer-brand-tag {
+    font-size: 0.7rem;
     color: var(--gotham-text-muted);
 }
 
-/* ==========================================================================
-   RESPONSIVE LAYOUT - SOCIAL
-   ========================================================================== */
+.footer-logo-mini {
+    height: 24px;         /* Più piccolo rispetto all'header */
+    width: auto;
+    filter: grayscale(100%) opacity(0.6); /* Effetto desaturato tipico del tema */
+    transition: all 0.3s ease;
+    display: block;
+    margin-bottom: 12px;  /* Spazio rispetto al testo WEB3SOLNET */
+}
+
+.footer-brand:hover .footer-logo-mini {
+    filter: grayscale(100%) opacity(1); /* Torna nitido al passaggio del mouse */
+    transform: translateY(-2px);       /* Leggera animazione verso l'alto */
+}
+
+.meta-label { color: var(--gotham-text-muted); margin-right: 8px; font-size: 0.75rem; }
+.meta-value { font-size: 0.75rem; }
+.status-online { color: #00ffa3; }
 
 @media (max-width: 768px) {
-    .social-section {
-        padding: 40px 24px;
-    }
-
-    .social-container {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 24px;
-    }
-
-    .social-links {
-        flex-direction: column; /* Sviluppo verticale dei link */
-        gap: 16px;
-    }
+    .social-container, .footer-container { flex-direction: column; gap: 32px; }
 }

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useConnection, useWallet } from '@solana/wallet-adapter-react';
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 import { sendSolTip } from '../wallet/tipsTransfer';
+import '../style/components/TipSection.css'
 
 // Importazione asset grafici delle valute
 import solIcon from '../img/sol.svg';
@@ -146,7 +147,11 @@ function Tipping({ onCancel }: TippingProps) {
                     </div>
 
                     {operationStatus && (
-                        <div className={`status-display ${operationLoading ? 'loading' : ''}`}>
+                        <div className={`status-display ${operationLoading ? 'loading-pulse' : ''}`}>
+                            <div className="status-header">
+                                <span className="status-dot"></span>
+                                <span className="status-label">System Message</span>
+                            </div>
                             <p className="status-text">{operationStatus}</p>
                         </div>
                     )}

@@ -1,7 +1,3 @@
-/* ==========================================================================
-   RESEARCH SUPPORT & CONTRIBUTION MODULE (GOTHAM STYLE UNIFIED WITH ASSETS)
-   ========================================================================== */
-
 .research-support-section {
     background-color: var(--gotham-bg-base);
     padding: 100px 40px;
@@ -17,276 +13,252 @@
     background-color: var(--gotham-bg-surface);
     border: 1px solid var(--gotham-border-muted);
     padding: 48px;
-}
-
-.section-header {
-    margin-bottom: 32px;
+    backdrop-filter: blur(10px);
 }
 
 .section-label {
     text-transform: uppercase;
     letter-spacing: 0.15em;
-    color: var(--gotham-text-muted);
+    color: var(--gotham-accent-primary);
     font-weight: 700;
     font-size: 0.8rem;
 }
 
 .section-title {
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-weight: 300;
-    margin-top: 8px;
-    color: var(--gotham-text-primary);
+    margin: 12px 0 24px 0;
 }
 
 .section-description {
-    font-size: 0.95rem;
+    font-size: 1rem;
     line-height: 1.7;
     color: var(--gotham-text-muted);
     margin-bottom: 40px;
 }
 
-/* ==========================================================================
-   CONTRIBUTION MODULE FORM & INPUTS
-   ========================================================================== */
-
-.contribution-module {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-}
-
-.module-title {
-    font-size: 1.4rem;
-    font-weight: 400;
-    letter-spacing: -0.01em;
-    color: var(--gotham-text-primary);
-}
-
+/* Tipping Module Inputs */
 .form-group {
+    margin-bottom: 24px;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 12px;
 }
 
-.form-group label, .info-label {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--gotham-text-muted);
-}
-
-/* Contenitore di input geometrico */
 .input-container-gotham {
-    display: flex;
     position: relative;
+    display: flex;
     align-items: center;
-    width: 100%;
 }
 
 .form-input {
     background-color: var(--gotham-bg-input);
     border: 1px solid var(--gotham-border-muted);
     color: var(--gotham-text-primary);
-    padding: 14px 100px 14px 14px; /* Aumentato lo spazio per badge e icona */
-    font-size: 0.95rem;
+    padding: 16px;
     font-family: var(--font-mono);
     width: 100%;
-    transition: border-color 0.15s ease;
+    font-size: 1rem;
 }
 
 .form-input:focus {
     outline: none;
-    border-color: var(--gotham-border-active);
+    border-color: var(--gotham-accent-primary);
 }
 
-/* Gestione delle icone valutarie integrate */
 .currency-badge {
     position: absolute;
     right: 16px;
     display: flex;
     align-items: center;
     gap: 8px;
-    pointer-events: none;
 }
 
-.currency-icon {
-    width: 18px;
-    height: 18px;
-    display: block;
-}
-
-.input-unit-label {
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: var(--gotham-text-muted);
-    text-transform: uppercase;
-}
-
-/* Rimozione delle freccette (spinners) numeriche natali */
-.hide-spinners::-webkit-outer-spin-button,
-.hide-spinners::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-.hide-spinners[type='number'] {
-    -moz-appearance: textfield;
-}
-
-/* Riga di conversione asincrona USDC */
-.conversion-analytics-line {
-    display: flex;
-    gap: 8px;
-    margin-top: 6px;
-    font-size: 0.8rem;
-    letter-spacing: 0.05em;
-    align-items: center;
-}
-
-.conversion-analytics-line .analytics-label {
-    color: var(--gotham-text-muted);
-    text-transform: uppercase;
-}
-
-.conversion-value-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.currency-icon-small {
-    width: 14px;
-    height: 14px;
-    display: block;
-}
-
-.conversion-analytics-line .analytics-value {
-    color: var(--gotham-accent-hover);
-    font-weight: 500;
-}
-
-/* Display Indirizzo di Verifica */
-.address-display {
-    background-color: var(--gotham-bg-input);
-    border: 1px solid var(--gotham-border-muted);
-    padding: 12px;
-    font-size: 0.8rem;
-    word-break: break-all;
-    color: var(--gotham-text-primary);
-}
-
-/* ==========================================================================
-   INTERACTION & CONTROL PANEL
-   ========================================================================== */
+.currency-icon { width: 20px; height: 20px; }
 
 .action-panel {
     display: flex;
     gap: 16px;
-    margin-top: 12px;
+    margin-top: 24px;
 }
 
 .action-button {
+    padding: 16px 32px;
     font-family: var(--font-mono);
     text-transform: uppercase;
-    letter-spacing: 0.1em;
     font-weight: 700;
-    font-size: 0.8rem;
-    padding: 14px 28px;
-    border: none;
     cursor: pointer;
-    transition: background-color 0.15s ease, color 0.15s ease;
+    transition: all 0.2s;
 }
 
 .primary-action {
-    background-color: var(--gotham-accent-primary);
+    background: var(--gotham-accent-primary);
     color: var(--gotham-bg-base);
+    border: none;
 }
 
-.primary-action:hover {
-    background-color: var(--gotham-accent-hover);
-}
+.primary-action:hover { background: var(--gotham-accent-hover); }
 
 .secondary-action {
-    background-color: transparent;
-    border: 1px solid var(--gotham-border-active);
-    color: var(--gotham-text-primary);
-}
-
-.secondary-action:hover {
-    background-color: var(--gotham-bg-input);
-}
-
-.cancel-action {
-    align-self: flex-start;
     background: transparent;
-    border: none;
-    color: var(--gotham-text-muted);
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    cursor: pointer;
-    padding: 0;
-    margin-top: 12px;
+    color: var(--gotham-text-primary);
+    border: 1px solid var(--gotham-border-active);
 }
 
-.cancel-action:hover {
+.secondary-action:hover { background: var(--gotham-border-muted); }
+
+.status-display {
+    margin-top: 20px;
+    padding: 12px;
+    background: var(--gotham-bg-input);
+    border-left: 3px solid var(--gotham-accent-primary);
+    font-size: 0.85rem;
+}
+
+@media (max-width: 480px) {
+    .action-panel { flex-direction: column; }
+    .contribution-card { padding: 24px; }
+}
+
+/* Container principale del modulo */
+.contribution-module {
+    display: flex;
+    flex-direction: column;
+    gap: 32px; /* Aumentato lo spazio per dare respiro */
+}
+
+.module-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gotham-text-primary);
+    border-left: 3px solid var(--gotham-accent-primary);
+    padding-left: 15px;
+}
+
+/* Pannello di Autenticazione (Wallet non connesso) */
+.authentication-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 40px 20px;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px dashed var(--gotham-border-active);
+}
+
+/* Focus sullo stato dell'input */
+.form-input {
+    background-color: var(--gotham-bg-input);
+    border: 1px solid var(--gotham-border-muted);
+    color: var(--gotham-text-primary);
+    padding: 18px 110px 18px 18px; /* Spazio per il badge SOL */
+    font-size: 1.1rem;
+    font-family: var(--font-mono);
+    width: 100%;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--gotham-accent-primary);
+    background-color: #0d1117;
+    box-shadow: 0 0 15px rgba(255, 159, 28, 0.1);
+}
+
+/* Badge della valuta migliorato */
+.currency-badge {
+    position: absolute;
+    right: 12px;
+    background: var(--gotham-border-muted);
+    padding: 6px 12px;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid var(--gotham-border-active);
+}
+
+.input-unit-label {
+    font-weight: 700;
     color: var(--gotham-text-primary);
 }
 
-/* Terminale di Stato Operativo */
-.status-display {
-    padding: 14px;
+/* Visualizzazione dell'indirizzo di verifica */
+.address-display {
+    display: block;
     background-color: var(--gotham-bg-input);
-    border-left: 2px solid var(--gotham-accent-hover);
+    border: 1px solid var(--gotham-border-muted);
+    padding: 15px;
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
+    word-break: break-all;
+    color: var(--gotham-accent-hover);
+    margin-top: 10px;
+    border-radius: 2px;
+    opacity: 0.9;
+}
+
+/* Terminale di Stato Migliorato */
+.status-display {
+    padding: 16px;
+    background-color: #07090c;
+    border: 1px solid var(--gotham-border-muted);
+    border-left: 3px solid var(--gotham-accent-primary);
+    position: relative;
+    overflow: hidden;
+}
+
+.status-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.status-dot {
+    width: 6px;
+    height: 6px;
+    background-color: var(--gotham-accent-primary);
+    border-radius: 50%;
+}
+
+.status-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--gotham-text-muted);
 }
 
 .status-text {
-    font-size: 0.8rem;
-    color: var(--gotham-text-primary);
+    font-size: 0.85rem;
+    line-height: 1.4;
 }
 
-/* ==========================================================================
-   TRANSITIONS & RESPONSIVE BREAKPOINTS
-   ========================================================================== */
-
-.transition-fade-in {
-    animation: gothamFade 0.2s ease-out;
+/* Animazione di caricamento */
+.loading-pulse {
+    animation: pulse-bg 2s infinite ease-in-out;
 }
 
-@keyframes gothamFade {
-    from { opacity: 0; transform: translateY(2px); }
-    to { opacity: 1; transform: translateY(0); }
+@keyframes pulse-bg {
+    0% { border-left-color: var(--gotham-accent-primary); }
+    50% { border-left-color: var(--gotham-text-muted); }
+    100% { border-left-color: var(--gotham-accent-primary); }
 }
 
-/* Tablet Layout */
-@media (max-width: 768px) {
-    .research-support-section {
-        padding: 60px 24px;
-    }
-
-    .contribution-card {
-        padding: 32px 24px;
-    }
-
-    .section-title {
-        font-size: 1.5rem;
-    }
+/* Bottone Annulla (Cancel) */
+.cancel-action {
+    margin-top: 20px;
+    opacity: 0.5;
+    font-size: 0.7rem;
+    text-decoration: underline;
+    background: none !important;
+    border: none !important;
 }
 
-/* Phone Layout */
-@media (max-width: 480px) {
-    .action-panel {
-        flex-direction: column;
-        gap: 12px;
-    }
-
-    .action-button {
-        width: 100%;
-        text-align: center;
-    }
-
-    .wallet-adapter-button {
-        width: 100%;
-        justify-content: center;
-    }
+.cancel-action:hover {
+    opacity: 1;
+    color: #ff4d4d !important;
 }

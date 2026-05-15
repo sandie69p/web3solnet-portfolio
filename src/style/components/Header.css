@@ -3,7 +3,8 @@
     justify-content: space-between;
     align-items: center;
     padding: 16px 40px;
-    background-color: var(--gotham-bg-base);
+    background-color: rgba(17, 18, 28, 0.8);
+    backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--gotham-border-muted);
     position: fixed;
     top: 0;
@@ -20,7 +21,6 @@
 .header-logo-img {
     height: 32px;
     width: auto;
-    display: block;
     filter: grayscale(100%) brightness(95%); 
 }
 
@@ -29,7 +29,6 @@
     letter-spacing: 0.2em;
     font-size: 0.95rem;
     color: var(--gotham-text-primary);
-    font-family: var(--font-mono);
 }
 
 .header-nav ul {
@@ -51,39 +50,12 @@
     color: var(--gotham-text-primary);
 }
 
-/* ==========================================================================
-   RESPONSIVE LAYOUT - HEADER
-   ========================================================================== */
-
-/* Tablet e Mobile */
 @media (max-width: 768px) {
     .header {
         padding: 16px 24px;
         flex-direction: column;
         gap: 16px;
-        position: absolute; /* Evita problemi di overlay su schermi molto corti */
     }
-
-    .header-nav ul {
-        gap: 20px;
-    }
-    
-    .header-nav a {
-        font-size: 0.75rem;
-    }
-}
-
-/* Smartphone Stretti */
-@media (max-width: 480px) {
-    .header-logo-text {
-        font-size: 0.85rem;
-    }
-    
-    .header-logo-img {
-        height: 28px;
-    }
-
-    .header-nav ul {
-        gap: 12px;
-    }
+    .header-nav ul { gap: 20px; }
+    .header-nav a { font-size: 0.75rem; }
 }

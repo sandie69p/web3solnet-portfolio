@@ -1,55 +1,51 @@
 .hero {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    min-height: 85vh;
+    min-height: 90vh;
     padding: 140px 40px 60px 40px;
     align-items: center;
     border-bottom: 1px solid var(--gotham-border-muted);
-    gap: 40px;
+    gap: 60px;
 }
 
 .hero-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    max-width: 600px;
 }
 
 .hero-role {
     font-size: 0.8rem;
     text-transform: uppercase;
-    letter-spacing: 0.15em;
-    color: var(--gotham-text-muted);
+    letter-spacing: 0.2em;
+    color: var(--gotham-accent-primary);
     margin-bottom: 16px;
+    display: block;
 }
 
 .hero-title {
-    font-size: 2.2rem;
+    font-size: 3rem;
     font-weight: 300;
-    line-height: 1.4;
-    margin-bottom: 24px;
-    letter-spacing: -0.02em;
+    line-height: 1.2;
     color: var(--gotham-text-primary);
+    margin-bottom: 24px;
 }
 
 .hero-description {
     font-size: 1rem;
-    line-height: 1.7;
+    line-height: 1.8;
     color: var(--gotham-text-muted);
-    max-width: 540px;
 }
 
 .hero-visual {
     width: 100%;
     height: 100%;
-    min-height: 400px;
+    min-height: 450px;
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
     border: 1px solid var(--gotham-border-muted);
     position: relative;
     display: flex;
     align-items: flex-end;
-    filter: grayscale(100%) contrast(105%) brightness(90%);
+    overflow: hidden;
 }
 
 .hero-visual-overlay {
@@ -58,7 +54,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(180deg, rgba(17, 18, 28, 0.3) 0%, rgba(24, 25, 38, 0.85) 100%);
+    background: linear-gradient(to bottom, rgba(17, 18, 28, 0.2), rgba(17, 18, 28, 0.8));
     z-index: 1;
 }
 
@@ -67,68 +63,21 @@
     z-index: 2;
     padding: 24px;
     font-size: 0.75rem;
-    letter-spacing: 0.05em;
     width: 100%;
-    background: rgba(11, 12, 18, 0.75);
-    border-top: 1px solid var(--gotham-border-muted);
+    background: rgba(11, 12, 18, 0.85);
     backdrop-filter: blur(4px);
-}
-
-.terminal-line {
-    color: var(--gotham-text-muted);
-    margin-bottom: 4px;
+    border-top: 1px solid var(--gotham-border-muted);
     font-family: var(--font-mono);
 }
 
-.terminal-line:first-child {
-    color: var(--gotham-accent-primary);
-    font-weight: 700;
+.terminal-line {
+    margin-bottom: 4px;
+    color: var(--gotham-accent-hover);
 }
 
-/* ==========================================================================
-   RESPONSIVE LAYOUT - HERO
-   ========================================================================== */
-
-/* Desktop Compatti / Tablet Landscape */
-@media (max-width: 1024px) {
-    .hero-title {
-        font-size: 1.8rem;
-    }
-}
-
-/* Tablet Verticale e Mobile */
 @media (max-width: 768px) {
-    .hero {
-        grid-template-columns: 1fr; /* Colonna singola */
-        padding: 160px 24px 40px 24px;
-        gap: 32px;
-    }
-    
-    .hero-content {
-        order: 1; /* Il testo viene mostrato prima */
-    }
-    
-    .hero-visual {
-        order: 2; /* Il terminale va sotto */
-        min-height: 300px;
-    }
-}
-
-/* Smartphone Stretti */
-@media (max-width: 480px) {
-    .hero {
-        padding-top: 180px; /* Spazio per l'header a due righe */
-    }
-    
-    .hero-title {
-        font-size: 1.5rem;
-    }
-    
-    .hero-description {
-        font-size: 0.9rem;
-    }
-    
-    .hero-visual {
-        min-height: 250px;
-    }
+    .hero { grid-template-columns: 1fr; padding-top: 160px; }
+    .hero-content { order: 1; }
+    .hero-visual { order: 2; min-height: 300px; }
+    .hero-title { font-size: 2.2rem; }
 }

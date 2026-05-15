@@ -24,7 +24,7 @@ function Hero() {
                 </span>
 
                 <h1 className="hero-title">
-                    Building systems, smart contracts and interactive experiences.
+                    Salvatore Pisu
                 </h1>
 
                 <p className="hero-description">
