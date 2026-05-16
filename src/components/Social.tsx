@@ -13,11 +13,11 @@ function Social() {
                         GitHub
                     </a>
 
-                    <a href="https://www.linkedin.com/in/tuo-username" target="_blank" rel="noreferrer">
+                    <a href="https://www.linkedin.com/in/sandie69" target="_blank" rel="noreferrer">
                         LinkedIn
                     </a>
 
-                    <a href="https://x.com/tuo-username" target="_blank" rel="noreferrer">
+                    <a href="https://x.com/sandie69a" target="_blank" rel="noreferrer">
                         X / Twitter
                     </a>
 
