@@ -2,11 +2,7 @@ import { useState } from 'react';
 import Tipping from './Tipping';
 import '../style/components/TipSection.css';
 
-/**
- * Componente per la Sezione di Supporto al Progetto
- */
 function TipSection() {
-    // Stato per gestire la transizione tra le schede
     const [contributionStatus, setContributionStatus] = useState<"initial" | "active">("initial");
 
     return (
@@ -16,12 +12,13 @@ function TipSection() {
                 {contributionStatus === "initial" && (
                     <div className="contribution-card initial-card">
                         <div className="section-header">
-                            <span className="section-label">Support</span>
-                            <h2 className="section-title">Invest in Research and Development.</h2>
+                            <span className="section-label">Support Me</span>
+                            <h2 className="section-title">Support My Research & Development.</h2>
                         </div>
                         
+                        {/* Linguaggio ammorbidito e più umano */}
                         <p className="section-description">
-                            We accelerate project timelines through independent, direct investment. Your contribution ensures the highest standard of technical development and operational execution.
+                            If you like my open-source tools and projects, feel free to buy me a coffee (or some SOL) to support my ongoing research and technical development!
                         </p>
 
                         <div className="action-panel">
@@ -29,7 +26,7 @@ function TipSection() {
                                 className="action-button primary-action" 
                                 onClick={() => setContributionStatus("active")}
                             >
-                                Initiate Contribution
+                                Send a Tip
                             </button>
                         </div>
                     </div>

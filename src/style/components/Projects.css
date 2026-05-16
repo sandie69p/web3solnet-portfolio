@@ -1,0 +1,124 @@
+.projects-section {
+    background-color: var(--gotham-bg-base);
+    padding: 100px 40px;
+    border-bottom: 1px solid var(--gotham-border-muted);
+}
+
+/* Gestione ottimale per progetto singolo */
+.projects-container-single {
+    display: flex;
+    justify-content: center;
+    margin-top: 48px;
+}
+
+/* Struttura rigida della card, stile terminale */
+.project-card {
+    background-color: var(--gotham-bg-surface);
+    border: 1px solid var(--gotham-border-muted);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 260px;
+    width: 100%;
+    max-width: 650px; /* Evita che si estenda troppo su schermi ultrawide */
+    backdrop-filter: blur(10px);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-card:hover {
+    border-color: var(--gotham-border-active);
+    background-color: rgba(24, 25, 38, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(255, 159, 28, 0.03);
+}
+
+.project-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.project-card-title {
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--gotham-text-primary);
+    letter-spacing: -0.01em;
+}
+
+/* Badge Difficoltà Tecnico */
+.difficulty-badge {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    padding: 4px 8px;
+    border: 1px solid transparent;
+    text-transform: uppercase;
+}
+
+.difficulty-badge.advanced {
+    color: var(--gotham-accent-primary);
+    border-color: rgba(255, 159, 28, 0.3);
+    background-color: rgba(255, 159, 28, 0.05);
+}
+
+.project-card-description {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--gotham-text-muted);
+    margin-bottom: 32px;
+    flex-grow: 1;
+}
+
+/* Row Inferiore per Tech e Links */
+.project-meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 16px;
+    border-top: 1px dashed var(--gotham-border-muted);
+}
+
+.tech-stack-container {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.tech-badge {
+    font-size: 0.7rem;
+    color: var(--gotham-text-muted);
+    background-color: var(--gotham-bg-input);
+    padding: 4px 8px;
+    border: 1px solid var(--gotham-border-muted);
+}
+
+/* Link di stile computazionale */
+.project-git-link {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--gotham-accent-primary);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: color 0.15s ease;
+}
+
+.project-git-link:hover {
+    color: var(--gotham-accent-hover);
+}
+
+@media (max-width: 768px) {
+    .projects-section {
+        padding: 60px 24px;
+    }
+    .project-card {
+        padding: 24px;
+    }
+    .project-card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+}

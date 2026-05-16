@@ -18,16 +18,16 @@ function Header() {
             <nav className="header-nav">
                 <ul>
                     <li>
-                        <a href="#projects">Projects</a>
+                        <a href="#whoami">Who Am I?</a>
                     </li>
                     <li>
-                        <a href="#contracts">Contracts</a>
+                        <a href="#projects">Projects</a>
                     </li>
                     <li>
                         <a href="#support">Support Me</a>
                     </li>
                     <li>
-                        <a href="#whoami">Who Am I?</a>
+                        <a href="#contracts">Contracts</a>
                     </li>
                 </ul>
             </nav>

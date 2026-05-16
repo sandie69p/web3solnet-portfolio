@@ -2,9 +2,7 @@ import { useState, useEffect } from 'react';
 import { useConnection, useWallet } from '@solana/wallet-adapter-react';
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 import { sendSolTip } from '../wallet/tipsTransfer';
-import '../style/components/TipSection.css'
 
-// Importazione asset grafici delle valute
 import solIcon from '../img/sol.svg';
 import usdcIcon from '../img/usdc.svg';
 
@@ -24,6 +22,7 @@ function Tipping({ onCancel }: TippingProps) {
     const [solPriceUsd, setSolPriceUsd] = useState<number | null>(null);
     const [usdcValue, setUsdcValue] = useState<string>('0.00');
 
+    // Il tuo indirizzo personale fisso
     const recipientAddress: string = "2tFjkHazUHaHsGD6jDPS4rwYqFbL8fJfTLweBMCAj9cX";
 
     useEffect(() => {
@@ -37,7 +36,7 @@ function Tipping({ onCancel }: TippingProps) {
                     setSolPriceUsd(data.solana.usd);
                 }
             } catch (error) {
-                console.error("Impossibile recuperare il feed dei prezzi SOL/USDC:", error);
+                console.error("Unable to fetch SOL/USDC price feed:", error);
             }
         };
 
@@ -57,19 +56,19 @@ function Tipping({ onCancel }: TippingProps) {
 
     const executeContribution = async () => {
         if (!connected || !publicKey) {
-            setOperationStatus("Authentication Required. Connect wallet.");
+            setOperationStatus("Please connect your wallet first.");
             return;
         }
 
         const parsedAmount = parseFloat(contributionAmount);
         if (isNaN(parsedAmount) || parsedAmount <= 0) {
-            setOperationStatus("Invalid amount specified. Recalculate contribution.");
+            setOperationStatus("Please enter a valid amount of SOL.");
             return;
         }
 
         try {
             setOperationLoading(true);
-            setOperationStatus("Transaction execution in progress...");
+            setOperationStatus("Sending transaction...");
 
             const signature = await sendSolTip({
                 connection,
@@ -79,11 +78,12 @@ function Tipping({ onCancel }: TippingProps) {
                 sendTransaction,
             });
 
-            setOperationStatus(`Contribution confirmed. TX ID: ${signature.slice(0, 10)}...`);
+            setOperationStatus(`Thank you! Transaction confirmed. ID: ${signature.slice(0, 10)}...`);
             setContributionAmount('');
         } catch (error: any) {
             console.error(error);
-            setOperationStatus(`Operation Failure. Error: ${error.message || "Unknown execution error."}`);
+            // Linguaggio ammorbidito per il fallimento
+            setOperationStatus("Transaction canceled or failed.");
         } finally {
             setOperationLoading(false);
         }
@@ -91,17 +91,20 @@ function Tipping({ onCancel }: TippingProps) {
 
     return (
         <div className="contribution-module">
-            <h3 className="module-title">Contribution Module</h3>
+            <h3 className="module-title">Send a Tip</h3>
             
             {!connected ? (
                 <div className="authentication-panel">
-                    <p>Authentication Required for Transaction Execution.</p>
+                    {/* Testo più standard e accogliente */}
+                    <p style={{ marginBottom: '16px', color: 'var(--gotham-text-muted)' }}>
+                        Connect your wallet to support my work.
+                    </p>
                     <WalletMultiButton />
                 </div>
             ) : (
                 <>
                     <div className="form-group">
-                        <label htmlFor="contribution-amount">Contribution Value (SOL):</label>
+                        <label htmlFor="contribution-amount">Amount (SOL):</label>
                         <div className="input-container-gotham">
                             <input 
                                 id="contribution-amount"
@@ -114,7 +117,6 @@ function Tipping({ onCancel }: TippingProps) {
                                 onChange={(e) => setContributionAmount(e.target.value)}
                                 disabled={operationLoading}
                             />
-                            {/* Icona SOL dentro l'input */}
                             <div className="currency-badge">
                                 <img src={solIcon} alt="SOL" className="currency-icon" />
                                 <span className="input-unit-label">SOL</span>
@@ -123,7 +125,6 @@ function Tipping({ onCancel }: TippingProps) {
                         
                         <div className="conversion-analytics-line">
                             <span className="analytics-label">Est. Value:</span>
-                            {/* Icona USDC affianco al valore convertito */}
                             <div className="conversion-value-wrapper">
                                 <img src={usdcIcon} alt="USDC" className="currency-icon-small" />
                                 <span className="analytics-value">{usdcValue} USDC</span>
@@ -131,17 +132,25 @@ function Tipping({ onCancel }: TippingProps) {
                         </div>
                     </div>
 
-                    <div className="form-group">
-                        <p className="info-label">Recipient Address Verification</p>
+                    {/* Sezione Indirizzo con nota di trasparenza */}
+                    <div className="form-group" style={{ marginTop: '8px' }}>
+                        <p className="info-label" style={{ marginBottom: '4px' }}>Recipient Wallet</p>
+                        <span className="address-note" style={{ fontSize: '0.75rem', color: 'var(--gotham-text-muted)', display: 'block', marginBottom: '8px' }}>
+                            This is my personal donation address. Feel free to verify it before sending.
+                        </span>
+                        
                         {showReceiverAddress ? (
-                            <span className="info-value address-display">{recipientAddress}</span>
+                            <div className="address-display-wrapper">
+                                <span className="address-display">{recipientAddress}</span>
+                            </div>
                         ) : (
                             <button 
                                 className="action-button secondary-action" 
                                 onClick={() => setShowReceiverAddress(true)}
                                 disabled={operationLoading}
+                                style={{ padding: '10px 20px', fontSize: '0.75rem' }}
                             >
-                                Verify Recipient Address
+                                Show Address
                             </button>
                         )}
                     </div>
@@ -150,7 +159,7 @@ function Tipping({ onCancel }: TippingProps) {
                         <div className={`status-display ${operationLoading ? 'loading-pulse' : ''}`}>
                             <div className="status-header">
                                 <span className="status-dot"></span>
-                                <span className="status-label">System Message</span>
+                                <span className="status-label">Status Log</span>
                             </div>
                             <p className="status-text">{operationStatus}</p>
                         </div>
@@ -162,14 +171,14 @@ function Tipping({ onCancel }: TippingProps) {
                             onClick={executeContribution}
                             disabled={operationLoading}
                         >
-                            {operationLoading ? "Executing Transaction..." : "Confirm and Execute Contribution"}
+                            {operationLoading ? "Sending..." : "Confirm Tip"}
                         </button>
                     </div>
                 </>
             )}
 
             <button className="action-button secondary-action cancel-action" onClick={onCancel} disabled={operationLoading}>
-                Cancel Operation
+                Back
             </button>
         </div>
     );

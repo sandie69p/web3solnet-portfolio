@@ -12,9 +12,8 @@ function Hero() {
             >
                 <div className="hero-visual-overlay"></div>
                 <div className="hero-screen">
-                    <div className="terminal-line">[SYS_STATUS: ONLINE]</div>
-                    <div className="terminal-line">[NETWORK: SOLANA_MAINNET]</div>
-                    <div className="terminal-line">[CORE_LOAD: OPTIMAL]</div>
+                    <div className="terminal-line">[aviability: always]</div>
+                    <div className="terminal-line">[Related to: solana_mainnet]</div>
                 </div>
             </div>
             <div className="hero-content">
@@ -31,6 +30,10 @@ function Hero() {
                     Focused on Web3 infrastructure, simulations,
                     frontend engineering and low-level development.
                 </p>
+
+                <p>{/** Inserisco linguaggi miei piu' usati */}</p>
+
+
 
             </div>
 
