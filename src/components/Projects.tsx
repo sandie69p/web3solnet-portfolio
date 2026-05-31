@@ -17,7 +17,16 @@ const PROJECTS_DATA = [
         languages: ["HTML", "CSS", "JavaScript"],
         githubUrl: "https://github.com/sandie69p/Glassmorphism_Tracker",
         difficulty: "EASY"
-    }
+    },
+
+    {
+        id: 3,
+        title: "Turn Based Game - Stellaris Like",
+        description: "A text-based 4X space strategy engine focused on robust Object-Oriented Programming (OOP). Features a stateful game loop, encapsulated domain models (Players, Planets, Districts), a dynamic imperial dashboard, and custom compilation architecture managed via a multi-tier Makefile.",
+        languages: ["Java", "Makefile"],
+        githubUrl: "https://github.com/sandie69p/Stellaris_Turn_Based", // Adatta l'URL se crei la repo dedicata
+        difficulty: "MEDIUM"
+    },
 ];
 
 function Projects() {
