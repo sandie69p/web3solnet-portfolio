@@ -4,29 +4,27 @@ const PROJECTS_DATA = [
     {
         id: 1,
         title: "Municipal Reporting System",
-        description: "An operational decentralized reporting platform designed for municipal infrastructure monitoring, auditing, and automated status deployment.",
+        description: "An operational decentralized reporting platform designed for municipal infrastructure monitoring, auditing, and automated status deployment. Built with a raw multi-index orthogonal graph structure on heap memory with strict transaction rollback and 0 memory leaks verified under Valgrind.",
         languages: ["C99", "Python", "Makefile"],
         githubUrl: "https://github.com/sandie69p/Progetto-PSD-2025-2026---Traccia-3", 
         difficulty: "ADVANCED"
     },
-
     {
         id: 2,
+        title: "Stellaris CLI Edition",
+        description: "A lightweight, turn-based 4X space strategy simulation engine built from scratch in pure Java. Implements a strict Model-View-Controller (MVC) decoupling pattern, strong data encapsulation with transactional resource calculation, and custom automated build orchestration.",
+        languages: ["Java", "Makefile", "CLI"],
+        githubUrl: "https://github.com/sandie69p/StellarisCLI", // Inserisci qui l'URL reale se deciderai di renderla pubblica o mantenere il link al JAR
+        difficulty: "ADVANCED"
+    },
+    {
+        id: 3,
         title: "Glassmorphism Tracker",
         description: "A sleek, real-time crypto price tracker built with Node.js/Binance API, Chart.js, and a modern Glassmorphism UI. Features include dynamic interval selection (1h to 1w), segmented price line/fill (green/red) based on the starting value, and distinct branding colors for BTC, ETH, and SOL. Perfect blend of style and technical data visualization.",
         languages: ["HTML", "CSS", "JavaScript"],
         githubUrl: "https://github.com/sandie69p/Glassmorphism_Tracker",
         difficulty: "EASY"
-    },
-
-    {
-        id: 3,
-        title: "Turn Based Game - Stellaris Like",
-        description: "A text-based 4X space strategy engine focused on robust Object-Oriented Programming (OOP). Features a stateful game loop, encapsulated domain models (Players, Planets, Districts), a dynamic imperial dashboard, and custom compilation architecture managed via a multi-tier Makefile.",
-        languages: ["Java", "Makefile"],
-        githubUrl: "https://github.com/sandie69p/Stellaris_Turn_Based", // Adatta l'URL se crei la repo dedicata
-        difficulty: "MEDIUM"
-    },
+    }
 ];
 
 function Projects() {
